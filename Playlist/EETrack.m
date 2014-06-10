@@ -10,4 +10,8 @@
 
 @implementation EETrack
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@", self.title];
+}
+
 @end

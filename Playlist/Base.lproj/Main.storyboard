@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="e3Y-Jf-RmP" detailTextLabel="nua-xA-pba" style="IBUITableViewCellStyleSubtitle" id="Ygq-zM-d4t">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" textLabel="e3Y-Jf-RmP" detailTextLabel="nua-xA-pba" style="IBUITableViewCellStyleSubtitle" id="Ygq-zM-d4t">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ygq-zM-d4t" id="1rD-WW-vwT">
@@ -46,15 +46,28 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="uRd-6i-9Wh"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Gl5-8J-ZlR"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Playlist" id="4aj-Dk-Fjk"/>
+                    <navigationItem key="navigationItem" title="Playlist" id="4aj-Dk-Fjk">
+                        <barButtonItem key="rightBarButtonItem" title="Reload" id="ibo-CO-T2G">
+                            <connections>
+                                <action selector="reloadButtonTapped:" destination="vXZ-lx-hvc" id="e3M-mx-tja"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="QYd-Yp-tJn" id="uS6-tf-sC4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="201"/>
+            <point key="canvasLocation" x="736" y="201"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iNv-OC-Lvk">
