@@ -21,6 +21,8 @@
 		263C34AD19468D0000A42495 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C348F19468D0000A42495 /* UIKit.framework */; };
 		263C34B519468D0000A42495 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 263C34B319468D0000A42495 /* InfoPlist.strings */; };
 		263C34B719468D0000A42495 /* PlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C34B619468D0000A42495 /* PlaylistTests.m */; };
+		263C34C219468F1A00A42495 /* EETrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C34C119468F1A00A42495 /* EETrack.m */; };
+		45AF2D38D09B45AC8E20C119 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B42FD433169496AA77A5395 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		263C34B219468D0000A42495 /* PlaylistTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlaylistTests-Info.plist"; sourceTree = "<group>"; };
 		263C34B419468D0000A42495 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		263C34B619468D0000A42495 /* PlaylistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistTests.m; sourceTree = "<group>"; };
+		263C34C019468F1A00A42495 /* EETrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EETrack.h; sourceTree = "<group>"; };
+		263C34C119468F1A00A42495 /* EETrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EETrack.m; sourceTree = "<group>"; };
+		4B42FD433169496AA77A5395 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBA8EDC8891E4BDFB0F1DE2E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 				263C348E19468D0000A42495 /* CoreGraphics.framework in Frameworks */,
 				263C349019468D0000A42495 /* UIKit.framework in Frameworks */,
 				263C348C19468D0000A42495 /* Foundation.framework in Frameworks */,
+				45AF2D38D09B45AC8E20C119 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,7 @@
 				263C34B019468D0000A42495 /* PlaylistTests */,
 				263C348A19468D0000A42495 /* Frameworks */,
 				263C348919468D0000A42495 /* Products */,
+				DBA8EDC8891E4BDFB0F1DE2E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +113,7 @@
 				263C348D19468D0000A42495 /* CoreGraphics.framework */,
 				263C348F19468D0000A42495 /* UIKit.framework */,
 				263C34AA19468D0000A42495 /* XCTest.framework */,
+				4B42FD433169496AA77A5395 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,13 +121,15 @@
 		263C349119468D0000A42495 /* Playlist */ = {
 			isa = PBXGroup;
 			children = (
+				263C34A319468D0000A42495 /* Images.xcassets */,
+				263C349219468D0000A42495 /* Supporting Files */,
 				263C349A19468D0000A42495 /* EEAppDelegate.h */,
 				263C349B19468D0000A42495 /* EEAppDelegate.m */,
 				263C349D19468D0000A42495 /* Main.storyboard */,
 				263C34A019468D0000A42495 /* EEViewController.h */,
 				263C34A119468D0000A42495 /* EEViewController.m */,
-				263C34A319468D0000A42495 /* Images.xcassets */,
-				263C349219468D0000A42495 /* Supporting Files */,
+				263C34C019468F1A00A42495 /* EETrack.h */,
+				263C34C119468F1A00A42495 /* EETrack.m */,
 			);
 			path = Playlist;
 			sourceTree = "<group>";
@@ -159,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 263C34BA19468D0000A42495 /* Build configuration list for PBXNativeTarget "Playlist" */;
 			buildPhases = (
+				1D6CE60CA6A14F9192EFC448 /* Check Pods Manifest.lock */,
 				263C348419468D0000A42495 /* Sources */,
 				263C348519468D0000A42495 /* Frameworks */,
 				263C348619468D0000A42495 /* Resources */,
+				EF39F2DD9E7643E3AA2EA175 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,6 +258,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D6CE60CA6A14F9192EFC448 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF39F2DD9E7643E3AA2EA175 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		263C348419468D0000A42495 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -253,6 +299,7 @@
 				263C34A219468D0000A42495 /* EEViewController.m in Sources */,
 				263C349C19468D0000A42495 /* EEAppDelegate.m in Sources */,
 				263C349819468D0000A42495 /* main.m in Sources */,
+				263C34C219468F1A00A42495 /* EETrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +421,7 @@
 		};
 		263C34BB19468D0000A42495 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBA8EDC8891E4BDFB0F1DE2E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -387,6 +435,7 @@
 		};
 		263C34BC19468D0000A42495 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBA8EDC8891E4BDFB0F1DE2E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -457,6 +506,7 @@
 				263C34BC19468D0000A42495 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		263C34BD19468D0000A42495 /* Build configuration list for PBXNativeTarget "PlaylistTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +515,7 @@
 				263C34BF19468D0000A42495 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
