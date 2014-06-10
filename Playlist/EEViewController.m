@@ -38,7 +38,7 @@
 - (void)loadPlaylist {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = nil;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json charset=utf-8"];
     
     NSLog(@"acceptableContentTypes: %@", manager.responseSerializer.acceptableContentTypes);
     
