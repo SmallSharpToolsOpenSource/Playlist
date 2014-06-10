@@ -38,12 +38,12 @@
 - (void)loadPlaylist {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    manager.responseSerializer.acceptableContentTypes = nil;
     
     NSLog(@"acceptableContentTypes: %@", manager.responseSerializer.acceptableContentTypes);
     
     AFHTTPRequestOperation *requestOperation = [manager GET:kPlaylistURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"playlist: %@ (%@)", responseObject, NSStringFromClass(responseObject));
+        NSLog(@"playlist: %@", responseObject);
         
 //        NSError *error;
 //        NSArray *json = [NSJSONSerialization
