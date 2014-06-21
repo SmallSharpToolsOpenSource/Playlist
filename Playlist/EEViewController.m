@@ -53,7 +53,7 @@
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json charset=utf-8"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json charset=utf-8", @"application/json"]];
     
     AFHTTPRequestOperation *requestOperation = [manager GET:kPlaylistURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *dictionary) {
         //NSLog(@"playlist: %@", dictionary);
@@ -66,11 +66,11 @@
             EETrack *track = [[EETrack alloc] init];
             
             track.title = [node[@"title"] stringByDecodingHTMLEntities];
-            track.body= [node[@"body"] stringByDecodingHTMLEntities];
-            track.path= node[@"path"];
-            track.playDate= node[@"play_date"];
-            track.artist= [node[@"field_artist"] stringByDecodingHTMLEntities];
-            track.album= [node[@"body"] stringByDecodingHTMLEntities];
+            track.body = [node[@"body"] stringByDecodingHTMLEntities];
+            track.path = node[@"path"];
+            track.playDate = node[@"play_date"];
+            track.artist = [node[@"field_artist"] stringByDecodingHTMLEntities];
+            track.album = [node[@"body"] stringByDecodingHTMLEntities];
             if (node[@"field_image"]) {
                 track.imageURL= [NSURL URLWithString:node[@"field_image"]];
             }
