@@ -19,6 +19,10 @@
 
 // http://www.radiomilwaukee.org/playlist-api?raw=1
 
+#define kTagImageView 1
+#define kTagTitleLabel 2
+#define kTagSubtitleLabel 3
+
 @interface EEViewController ()
 
 @property (nonatomic, strong) NSArray *tracks;
@@ -53,7 +57,7 @@
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json charset=utf-8", @"application/json"]];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json charset=utf-8", @"application/json"]];
     
     AFHTTPRequestOperation *requestOperation = [manager GET:kPlaylistURL parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *dictionary) {
         //NSLog(@"playlist: %@", dictionary);
@@ -87,14 +91,6 @@
     [requestOperation start];
 }
 
-- (void)addToMutableArray:(NSMutableArray *)mutableArray {
-    if (!mutableArray) {
-        mutableArray = @[].mutableCopy;
-    }
-    [mutableArray addObject:mutableArray];
-    [self addToMutableArray:mutableArray];
-}
-
 #pragma mark - UITableViewDataSource
 #pragma mark -
 
@@ -106,26 +102,33 @@
     static NSString *CellIdentifier = @"TrackCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:kTagImageView];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:kTagTitleLabel];
+    UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:kTagSubtitleLabel];
+    
+    titleLabel.text = nil;
+    subtitleLabel.text = nil;
+    
     EETrack *track = self.tracks[indexPath.row];
-    cell.textLabel.text = track.title;
+    titleLabel.text = track.title;
     if (track.album.length && track.artist.length) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.album, track.artist];
+        subtitleLabel.text = [NSString stringWithFormat:@"%@ - %@", track.album, track.artist];
     }
     else if (track.album.length) {
-        cell.detailTextLabel.text = track.album;
+        subtitleLabel.text = track.album;
     }
     else if (track.artist.length) {
-        cell.detailTextLabel.text = track.artist;
+        subtitleLabel.text = track.artist;
     }
     else {
-        cell.detailTextLabel.text = nil;
+        subtitleLabel.text = nil;
     }
     
     if (track.imageURL) {
-        [cell.imageView setImageWithURL:track.imageURL];
+        [imageView setImageWithURL:track.imageURL];
     }
     else {
-        cell.imageView.image = nil;
+        imageView.image = nil;
     }
     
     return cell;
