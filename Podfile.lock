@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.0.3):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.0.3)
+    - AFNetworking/NSURLSession (= 2.0.3)
+    - AFNetworking/Reachability (= 2.0.3)
+    - AFNetworking/Security (= 2.0.3)
+    - AFNetworking/Serialization (= 2.0.3)
+    - AFNetworking/UIKit (= 2.0.3)
   - AFNetworking/NSURLConnection (2.0.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -18,9 +18,9 @@ PODS:
   - AFNetworking/UIKit (2.0.3):
     - AFNetworking/NSURLConnection
   - MWFeedParser (1.0.1):
-    - MWFeedParser/FeedParser
-    - MWFeedParser/NSDate+InternetDateTime
-    - MWFeedParser/NSString+HTML
+    - MWFeedParser/FeedParser (= 1.0.1)
+    - MWFeedParser/NSDate+InternetDateTime (= 1.0.1)
+    - MWFeedParser/NSString+HTML (= 1.0.1)
   - MWFeedParser/FeedParser (1.0.1):
     - MWFeedParser/NSDate+InternetDateTime
     - MWFeedParser/NSString+HTML
@@ -32,7 +32,7 @@ DEPENDENCIES:
   - MWFeedParser (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: a4d0e9a64de9242986620dafd1b3cee3b413ac5c
-  MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
+  AFNetworking: 6b0f579b7cfe3ede501df0248c7ee1976e926aec
+  MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.38.2
