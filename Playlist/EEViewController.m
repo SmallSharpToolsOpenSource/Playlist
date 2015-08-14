@@ -12,7 +12,7 @@
 #import "EETrack.h"
 
 #import "UIImageView+AFNetworking.h"
-#import "NSString+HTML.h"
+//#import "NSString+HTML.h"
 
 #define kBaseURL @"http://www.radiomilwaukee.org"
 #define kPlaylistURL @"/playlist-api?raw=1"
@@ -35,6 +35,12 @@
 
 #pragma mark - View Lifecycle
 #pragma mark -
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -69,12 +75,12 @@
             NSDictionary *node = item[@"node"];
             EETrack *track = [[EETrack alloc] init];
             
-            track.title = [node[@"title"] stringByDecodingHTMLEntities];
-            track.body = [node[@"body"] stringByDecodingHTMLEntities];
+            track.title = [self decodedHTMLEntityFromString:node[@"title"]];
+            track.body = [self decodedHTMLEntityFromString:node[@"body"]];
             track.path = node[@"path"];
             track.playDate = node[@"play_date"];
-            track.artist = [node[@"field_artist"] stringByDecodingHTMLEntities];
-            track.album = [node[@"body"] stringByDecodingHTMLEntities];
+            track.artist = [self decodedHTMLEntityFromString:node[@"field_artist"]];
+            track.album = [self decodedHTMLEntityFromString:node[@"body"]];
             if (node[@"field_image"]) {
                 track.imageURL= [NSURL URLWithString:node[@"field_image"]];
             }
@@ -89,6 +95,18 @@
         NSLog(@"Error: %@", error.description);
     }];
     [requestOperation start];
+}
+
+- (NSString *)decodedHTMLEntityFromString:(NSString *)string {
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *options = @{
+                              NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
+                              NSCharacterEncodingDocumentAttribute : @(NSUTF8StringEncoding)
+                              };
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
+    NSString *decodedString = [attributedString string];
+    
+    return decodedString;
 }
 
 #pragma mark - UITableViewDataSource
@@ -132,6 +150,10 @@
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
 }
 
 #pragma mark - UITableViewDelegate
